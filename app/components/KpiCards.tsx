@@ -1,17 +1,14 @@
 "use client";
 
-import { TrendingDown, IndianRupee, Building2, PiggyBank } from "lucide-react";
-
 function fmt(n: number) {
   if (n >= 10000000) return `₹${(n / 10000000).toFixed(2)} Cr`;
-  if (n >= 100000) return `₹${(n / 100000).toFixed(2)} L`;
+  if (n >= 100000) return `₹${(n / 100000).toFixed(2)}L`;
   return `₹${n.toLocaleString("en-IN")}`;
 }
 
 interface KpisProps {
   kpis: {
     currentMonthlyProjected: number;
-    urmilGuptaShare: number;
     coWorkingTotal: number;
     monthlySavings: number;
     annualSavings: number;
@@ -19,79 +16,90 @@ interface KpisProps {
   };
 }
 
+const cardConfig = [
+  {
+    key: "current",
+    label: "Current Monthly Cost",
+    sub: "Urmil Gupta Lease — Projected",
+    note: "Full premises total",
+    bg: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
+    border: "rgba(148,163,184,0.2)",
+    accent: "#94a3b8",
+    icon: "🏢",
+  },
+  {
+    key: "coworking",
+    label: "Co-Working Space Cost",
+    sub: "Proposed — If We Move",
+    note: "All-inclusive monthly",
+    bg: "linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)",
+    border: "rgba(129,140,248,0.3)",
+    accent: "#a5b4fc",
+    icon: "🏙️",
+  },
+  {
+    key: "monthly",
+    label: "Monthly Savings",
+    sub: "Starting from Day One",
+    note: "54% cost reduction",
+    bg: "linear-gradient(135deg, #052e16 0%, #064e3b 100%)",
+    border: "rgba(52,211,153,0.3)",
+    accent: "#6ee7b7",
+    icon: "📉",
+  },
+  {
+    key: "annual",
+    label: "Annual Savings",
+    sub: "12-Month Projection",
+    note: "Direct P&L impact",
+    bg: "linear-gradient(135deg, #2e1065 0%, #4c1d95 100%)",
+    border: "rgba(196,181,253,0.3)",
+    accent: "#c4b5fd",
+    icon: "💰",
+  },
+];
+
 export default function KpiCards({ kpis }: KpisProps) {
-  const cards = [
-    {
-      label: "Current Monthly Cost",
-      sublabel: "Urmil Gupta Lease (Projected)",
-      value: fmt(kpis.currentMonthlyProjected),
-      sub: "Full premises total",
-      icon: Building2,
-      color: "from-slate-700 to-slate-800",
-      textColor: "text-slate-100",
-      subColor: "text-slate-400",
-    },
-    {
-      label: "Co-Working Space Cost",
-      sublabel: "Proposed monthly outflow",
-      value: fmt(kpis.coWorkingTotal),
-      sub: "Rent + pantry included",
-      icon: IndianRupee,
-      color: "from-indigo-600 to-indigo-700",
-      textColor: "text-indigo-100",
-      subColor: "text-indigo-300",
-    },
-    {
-      label: "Monthly Savings",
-      sublabel: "If we move to co-working",
-      value: fmt(kpis.monthlySavings),
-      sub: `${kpis.savingsPercent}% cost reduction`,
-      icon: TrendingDown,
-      color: "from-emerald-600 to-emerald-700",
-      textColor: "text-emerald-100",
-      subColor: "text-emerald-300",
-    },
-    {
-      label: "Annual Savings",
-      sublabel: "Projected over 12 months",
-      value: fmt(kpis.annualSavings),
-      sub: "Straight-line projection",
-      icon: PiggyBank,
-      color: "from-violet-600 to-violet-700",
-      textColor: "text-violet-100",
-      subColor: "text-violet-300",
-    },
+  const values = [
+    kpis.currentMonthlyProjected,
+    kpis.coWorkingTotal,
+    kpis.monthlySavings,
+    kpis.annualSavings,
   ];
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      {cards.map((card) => {
-        const Icon = card.icon;
-        return (
-          <div
-            key={card.label}
-            className={`bg-gradient-to-br ${card.color} rounded-2xl p-5 shadow-lg`}
-          >
-            <div className="flex items-start justify-between mb-3">
-              <div>
-                <p className={`text-xs font-semibold uppercase tracking-wider ${card.subColor}`}>
-                  {card.sublabel}
-                </p>
-                <p className={`text-sm font-medium mt-0.5 ${card.textColor}`}>
-                  {card.label}
-                </p>
-              </div>
-              <div className="bg-white/15 rounded-xl p-2">
-                <Icon className={`w-5 h-5 ${card.textColor}`} />
-              </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+      {cardConfig.map((card, i) => (
+        <div
+          key={card.key}
+          style={{
+            background: card.bg,
+            border: `1px solid ${card.border}`,
+            borderRadius: 16,
+            padding: "22px 24px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
+            <div>
+              <p style={{ color: card.accent, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 3 }}>
+                {card.sub}
+              </p>
+              <p style={{ color: "rgba(255,255,255,0.75)", fontSize: 13, fontWeight: 500 }}>
+                {card.label}
+              </p>
             </div>
-            <p className={`text-3xl font-bold ${card.textColor} mb-1`}>
-              {card.value}
-            </p>
-            <p className={`text-xs ${card.subColor}`}>{card.sub}</p>
+            <span style={{ fontSize: 24, lineHeight: 1 }}>{card.icon}</span>
           </div>
-        );
-      })}
+          <p style={{ color: "#ffffff", fontSize: 32, fontWeight: 800, lineHeight: 1, marginBottom: 8, letterSpacing: "-0.02em" }}>
+            {fmt(values[i])}
+          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: card.accent }} />
+            <p style={{ color: card.accent, fontSize: 12, fontWeight: 500 }}>{card.note}</p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

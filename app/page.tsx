@@ -1,74 +1,117 @@
 "use client";
 
-import { kpis, benefits, monthlyActuals, summaryData } from "./data";
+import { useState } from "react";
+import { kpis, benefits, monthlyActuals, summaryData, vendorData, summaryTableData, summaryTotals, summaryBenefits } from "./data";
 import KpiCards from "./components/KpiCards";
 import CostComparisonChart from "./components/CostComparisonChart";
 import MonthlyTrendChart from "./components/MonthlyTrendChart";
 import BenefitsSection from "./components/BenefitsSection";
 import TopExpensesChart from "./components/TopExpensesChart";
 import SavingsBreakdown from "./components/SavingsBreakdown";
+import VendorTable from "./components/VendorTable";
+import SummaryTable from "./components/SummaryTable";
+
+const tabs = [
+  { id: "overview", label: "📊 Executive Overview" },
+  { id: "summary",  label: "📋 Cost Summary Table" },
+  { id: "vendors",  label: "🏷️ Vendor-wise Details" },
+];
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState("overview");
+
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-indigo-700 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-10">
-          <div className="flex items-start justify-between">
+    <div className="min-h-screen" style={{ background: "#f1f5f9", fontFamily: "var(--font-jakarta), sans-serif" }}>
+      {/* Hero Header */}
+      <header style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)" }}>
+        <div className="max-w-7xl mx-auto px-6 pt-10 pb-8">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
             <div>
-              <p className="text-indigo-300 text-sm font-medium uppercase tracking-widest mb-2">
-                Cue Learn Pvt. Limited — Gurgaon Office
-              </p>
-              <h1 className="text-4xl font-bold mb-3">
+              <div className="flex items-center gap-2 mb-3">
+                <span style={{ background: "#312e81", color: "#a5b4fc", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", padding: "3px 10px", borderRadius: 999 }}>
+                  CUELEARN PVT. LIMITED · GURGAON OFFICE
+                </span>
+              </div>
+              <h1 style={{ color: "#ffffff", fontSize: 32, fontWeight: 800, lineHeight: 1.2, marginBottom: 8 }}>
                 Office Premises Cost Analysis
               </h1>
-              <p className="text-indigo-200 text-lg">
-                Urmil Gupta Lease Property vs Co-Working Space
+              <p style={{ color: "#94a3b8", fontSize: 16, marginBottom: 20 }}>
+                Urmil Gupta Lease Property vs Co-Working Space + Basement + Offline Centre
               </p>
+              <div style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.3)", borderRadius: 12, padding: "12px 20px", display: "inline-flex", alignItems: "center", gap: 10 }}>
+                <span style={{ fontSize: 18 }}>✅</span>
+                <div>
+                  <span style={{ color: "#34d399", fontWeight: 700, fontSize: 14 }}>RECOMMENDATION: </span>
+                  <span style={{ color: "#6ee7b7", fontSize: 14 }}>Move to Co-Working Space — Save </span>
+                  <span style={{ color: "#34d399", fontWeight: 800, fontSize: 14 }}>₹78.39L annually</span>
+                </div>
+              </div>
             </div>
-            <div className="text-right hidden md:block">
-              <div className="bg-white/10 rounded-2xl px-6 py-4 border border-white/20">
-                <p className="text-indigo-300 text-xs uppercase tracking-wider mb-1">Data Period</p>
-                <p className="text-white font-semibold">Sep 2024 – Mar 2025</p>
-                <p className="text-indigo-300 text-xs mt-1">7 months actuals</p>
+            <div style={{ flexShrink: 0 }}>
+              <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 16, padding: "16px 24px", textAlign: "right" }}>
+                <p style={{ color: "#64748b", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>Data Period</p>
+                <p style={{ color: "#ffffff", fontWeight: 700, fontSize: 15 }}>Sep 2024 – Mar 2025</p>
+                <p style={{ color: "#64748b", fontSize: 12, marginTop: 2 }}>7 months of actuals</p>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Tab Bar */}
+        <div className="max-w-7xl mx-auto px-6" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div style={{ display: "flex", gap: 2 }}>
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  padding: "14px 22px",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  background: activeTab === tab.id ? "rgba(129,140,248,0.1)" : "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  borderBottom: activeTab === tab.id ? "2.5px solid #818cf8" : "2.5px solid transparent",
+                  color: activeTab === tab.id ? "#818cf8" : "#64748b",
+                  transition: "all 0.15s",
+                  fontFamily: "inherit",
+                  borderRadius: "8px 8px 0 0",
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-10 space-y-10">
-        {/* KPI Cards */}
-        <KpiCards kpis={kpis} />
-
-        {/* Cost Comparison + Top Expenses */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          <div className="lg:col-span-3">
-            <CostComparisonChart data={summaryData} />
+      {/* Tab Content */}
+      <main className="max-w-7xl mx-auto px-6 py-8">
+        {activeTab === "overview" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <KpiCards kpis={kpis} />
+            <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 20 }}>
+              <CostComparisonChart data={summaryData} />
+              <TopExpensesChart data={summaryData} />
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 20 }}>
+              <MonthlyTrendChart data={monthlyActuals} />
+              <SavingsBreakdown data={summaryData} kpis={kpis} />
+            </div>
+            <BenefitsSection benefits={benefits} />
           </div>
-          <div className="lg:col-span-2">
-            <TopExpensesChart data={summaryData} />
-          </div>
-        </div>
-
-        {/* Monthly Trend + Savings Breakdown */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          <div className="lg:col-span-3">
-            <MonthlyTrendChart data={monthlyActuals} />
-          </div>
-          <div className="lg:col-span-2">
-            <SavingsBreakdown data={summaryData} kpis={kpis} />
-          </div>
-        </div>
-
-        {/* Benefits */}
-        <BenefitsSection benefits={benefits} />
-
-        {/* Footer */}
-        <footer className="text-center py-6 text-slate-400 text-sm border-t border-slate-200">
-          Cue Learn Pvt. Limited · Office Premises Cost Analysis · FY 2024–25
-        </footer>
+        )}
+        {activeTab === "summary" && (
+          <SummaryTable data={summaryTableData} totals={summaryTotals} benefits={summaryBenefits} />
+        )}
+        {activeTab === "vendors" && (
+          <VendorTable data={vendorData} />
+        )}
       </main>
+
+      <footer style={{ textAlign: "center", padding: "24px 0", color: "#94a3b8", fontSize: 12, borderTop: "1px solid #e2e8f0", marginTop: 16 }}>
+        Cue Learn Pvt. Limited · Office Premises Cost Analysis · FY 2024–25 · Data: Sep 2024 – Mar 2025
+      </footer>
     </div>
   );
 }
