@@ -12,7 +12,7 @@ export const summaryTableData: SummaryRow[] = [
   { gl: "AC Repair",                        avgActual: 11562,   projectedAvg: 11562,   urmilGupta: 5781,   coWorking: null,   totalProjected: 5781,    savings: 5781 },
   { gl: "Admin Salary",                     avgActual: 103127,  projectedAvg: 103127,  urmilGupta: 51564,  coWorking: null,   totalProjected: 51564,   savings: 51564 },
   { gl: "Coffee Machine Rent",              avgActual: 46500,   projectedAvg: 46500,   urmilGupta: 23250,  coWorking: null,   totalProjected: 23250,   savings: 23250 },
-  { gl: "Communication Expenses",           avgActual: 100345,  projectedAvg: 107032,  urmilGupta: 53516,  coWorking: null,   totalProjected: 53516,   savings: 53516 },
+  { gl: "Internet Charges",                 avgActual: 69167,   projectedAvg: 69167,   urmilGupta: 34583,  coWorking: null,   totalProjected: 34583,   savings: 34583 },
   { gl: "Dining Table Rent",                avgActual: 18317,   projectedAvg: 18317,   urmilGupta: 9159,   coWorking: null,   totalProjected: 9159,    savings: 9159 },
   { gl: "Electricity Expenses",             avgActual: 60361,   projectedAvg: 60361,   urmilGupta: 30181,  coWorking: null,   totalProjected: 30181,   savings: 30180 },
   { gl: "Generator Diesel",                 avgActual: 8106,    projectedAvg: 8916,    urmilGupta: 4458,   coWorking: null,   totalProjected: 4458,    savings: 4458 },
@@ -23,21 +23,21 @@ export const summaryTableData: SummaryRow[] = [
   { gl: "Ground, 1st & 2nd Floor Rent",     avgActual: 1150000, projectedAvg: 1322500, urmilGupta: 440833, coWorking: 700000, totalProjected: 1140833, savings: 181667 },
   { gl: "Other Repairs",                    avgActual: 100000,  projectedAvg: 100000,  urmilGupta: 50000,  coWorking: null,   totalProjected: 50000,   savings: 50000 },
   { gl: "Petty Cash Expense",               avgActual: 8302,    projectedAvg: 8302,    urmilGupta: null,   coWorking: null,   totalProjected: 0,       savings: 8302 },
-  { gl: "Ravindra CC (Pantry+Groceries)",   avgActual: 19117,   projectedAvg: 19117,   urmilGupta: null,   coWorking: 21029,  totalProjected: 21029,   savings: -1912 },
+  { gl: "Ravindra CC (Pantry+Groceries)",   avgActual: 19117,   projectedAvg: 19117,   urmilGupta: 19117,  coWorking: null,   totalProjected: 19117,   savings: 0 },
   { gl: "Repairs & Maintenance – Others",   avgActual: 4418,    projectedAvg: 4860,    urmilGupta: 2430,   coWorking: null,   totalProjected: 2430,    savings: 2430 },
   { gl: "Security Expenses",                avgActual: 12800,   projectedAvg: 12800,   urmilGupta: 14080,  coWorking: null,   totalProjected: 14080,   savings: -1280 },
-  { gl: "Suneel CC (Pantry+Groceries)",     avgActual: 35420,   projectedAvg: 35420,   urmilGupta: null,   coWorking: 38961,  totalProjected: 38961,   savings: -3541 },
+  { gl: "Suneel CC (Pantry+Groceries)",     avgActual: 35420,   projectedAvg: 35420,   urmilGupta: 35420,  coWorking: null,   totalProjected: 35420,   savings: 0 },
   { gl: "Vending Machine Rent",             avgActual: 9750,    projectedAvg: 9750,    urmilGupta: null,   coWorking: 9750,   totalProjected: 9750,    savings: 0 },
   { gl: "Water Charges",                    avgActual: 343,     projectedAvg: 343,     urmilGupta: 377,    coWorking: null,   totalProjected: 377,     savings: -34 },
 ];
 
 export const summaryTotals = {
-  avgActual: 2419603,
-  projectedAvg: 2648411,
-  urmilGupta: 1225380,
-  coWorking: 769740,
-  totalProjected: 1995120,
-  savings: 653291,
+  avgActual: 2388425,
+  projectedAvg: 2610546,
+  urmilGupta: 1260984,
+  coWorking: 709750,
+  totalProjected: 1970734,
+  savings: 639811,
 };
 
 export const summaryBenefits = [
@@ -49,12 +49,12 @@ export const summaryBenefits = [
 ];
 
 export const kpis = {
-  currentMonthlyProjected: 2648411,
-  urmilGuptaShare: 1225380,
-  coWorkingTotal: 769740,
-  monthlySavings: 653291,
-  annualSavings: 7839492,
-  savingsPercent: 53,
+  currentMonthlyProjected: 2610546,
+  urmilGuptaShare: 1260984,
+  proposedTotal: 1970734,
+  monthlySavings: 639811,
+  annualSavings: 7677732,
+  savingsPercent: 51,
 };
 
 export const summaryData = [
@@ -63,12 +63,12 @@ export const summaryData = [
   { category: "House Keeping", urmilGupta: 100058, coWorking: 0, savings: 100058 },
   { category: "Leasehold Improvements", urmilGupta: 77788, coWorking: 0, savings: 77788 },
   { category: "Office Expense", urmilGupta: 61906, coWorking: 0, savings: 61906 },
-  { category: "Communication", urmilGupta: 53516, coWorking: 0, savings: 53516 },
+  { category: "Internet Charges", urmilGupta: 34583, coWorking: 0, savings: 34583 },
   { category: "Admin Salary", urmilGupta: 51564, coWorking: 0, savings: 51564 },
   { category: "Other Repairs", urmilGupta: 50000, coWorking: 0, savings: 50000 },
   { category: "Coffee Machine Rent", urmilGupta: 23250, coWorking: 0, savings: 23250 },
-  { category: "Suneel CC (Pantry)", urmilGupta: 0, coWorking: 38961, savings: 0 },
-  { category: "Ravindra CC (Pantry)", urmilGupta: 0, coWorking: 21029, savings: 0 },
+  { category: "Suneel CC (Pantry)", urmilGupta: 35420, coWorking: 0, savings: 0 },
+  { category: "Ravindra CC (Pantry)", urmilGupta: 19117, coWorking: 0, savings: 0 },
   { category: "Electricity", urmilGupta: 30181, coWorking: 0, savings: 30181 },
   { category: "Vending Machine Rent", urmilGupta: 0, coWorking: 9750, savings: 0 },
   { category: "Security", urmilGupta: 14080, coWorking: 0, savings: 0 },
@@ -82,12 +82,12 @@ export const summaryData = [
 
 export const monthlyActuals = [
   { month: "Sep", amount: 1906698 },
-  { month: "Oct", amount: 2124513 },
-  { month: "Nov", amount: 2247144 },
-  { month: "Dec", amount: 2868684 },
-  { month: "Jan", amount: 2194676 },
-  { month: "Feb", amount: 2492283 },
-  { month: "Mar", amount: 2390244 },
+  { month: "Oct", amount: 2120058 },
+  { month: "Nov", amount: 2242607 },
+  { month: "Dec", amount: 2862589 },
+  { month: "Jan", amount: 2110361 },
+  { month: "Feb", amount: 2482860 },
+  { month: "Mar", amount: 2305821 },
 ];
 
 export type VendorStatus = "eliminated" | "retained" | "reduced";
@@ -111,22 +111,10 @@ export interface VendorRow {
 
 export const vendorData: VendorRow[] = [
   {
-    gl: "Communication", vendor: "Bharti Airtel GGN", frequency: "Monthly",
-    sep: 0, oct: 4456, nov: 4537, dec: 6096, jan: 9315, feb: 9423, mar: 9423, projected: 10365,
-    remarks: "Mar cost + 10% increase",
-    status: "eliminated", statusNote: "Included in co-working package",
-  },
-  {
-    gl: "Communication", vendor: "Bharti Airtel (Quarterly)", frequency: "Quarterly",
-    sep: 0, oct: 0, nov: 0, dec: 0, jan: 75000, feb: 0, mar: 75000, projected: 27500,
-    remarks: "3-month avg + 10% increase",
-    status: "eliminated", statusNote: "Included in co-working package",
-  },
-  {
-    gl: "Communication", vendor: "TATA Teleservices", frequency: "Quarterly",
+    gl: "Internet Charges", vendor: "TATA Teleservices Limited", frequency: "Quarterly",
     sep: 0, oct: 207500, nov: 0, dec: 207500, jan: 0, feb: 0, mar: 207500, projected: 69167,
-    remarks: "3-month average",
-    status: "eliminated", statusNote: "Included in co-working package",
+    remarks: "Considered last 3 months average",
+    status: "eliminated", statusNote: "Internet included in co-working package",
   },
   {
     gl: "Electricity", vendor: "Urmil Gupta", frequency: "Monthly",
@@ -270,8 +258,8 @@ export const vendorData: VendorRow[] = [
 
 export const benefits = [
   {
-    title: "₹78L+ Annual Savings",
-    description: "₹6.53L/month savings directly improves the bottom line from day one.",
+    title: "₹76L+ Annual Savings",
+    description: "₹6.40L/month savings directly improves the bottom line from day one.",
     icon: "rupee",
     color: "emerald",
     highlight: true,

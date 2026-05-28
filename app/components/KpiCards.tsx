@@ -9,7 +9,7 @@ function fmt(n: number) {
 interface KpisProps {
   kpis: {
     currentMonthlyProjected: number;
-    coWorkingTotal: number;
+    proposedTotal: number;
     monthlySavings: number;
     annualSavings: number;
     savingsPercent: number;
@@ -19,19 +19,19 @@ interface KpisProps {
 const cardConfig = [
   {
     key: "current",
-    label: "Current Monthly Cost",
+    label: "Current Cost — Urmil Gupta",
     sub: "Urmil Gupta Lease — Projected",
-    note: "Full premises total",
+    note: "Full premises monthly total",
     bg: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
     border: "rgba(148,163,184,0.2)",
     accent: "#94a3b8",
     icon: "🏢",
   },
   {
-    key: "coworking",
-    label: "Co-Working Space Cost",
-    sub: "Proposed — If We Move",
-    note: "All-inclusive monthly",
+    key: "proposed",
+    label: "Proposed Cost",
+    sub: "Co-Working + Basement + Offline Centre",
+    note: "All-inclusive monthly total",
     bg: "linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)",
     border: "rgba(129,140,248,0.3)",
     accent: "#a5b4fc",
@@ -41,34 +41,23 @@ const cardConfig = [
     key: "monthly",
     label: "Monthly Savings",
     sub: "Starting from Day One",
-    note: "54% cost reduction",
+    note: "24.5% cost reduction",
     bg: "linear-gradient(135deg, #052e16 0%, #064e3b 100%)",
     border: "rgba(52,211,153,0.3)",
     accent: "#6ee7b7",
     icon: "📉",
-  },
-  {
-    key: "annual",
-    label: "Annual Savings",
-    sub: "12-Month Projection",
-    note: "Direct P&L impact",
-    bg: "linear-gradient(135deg, #2e1065 0%, #4c1d95 100%)",
-    border: "rgba(196,181,253,0.3)",
-    accent: "#c4b5fd",
-    icon: "💰",
   },
 ];
 
 export default function KpiCards({ kpis }: KpisProps) {
   const values = [
     kpis.currentMonthlyProjected,
-    kpis.coWorkingTotal,
+    kpis.proposedTotal,
     kpis.monthlySavings,
-    kpis.annualSavings,
   ];
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
       {cardConfig.map((card, i) => (
         <div
           key={card.key}

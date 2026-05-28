@@ -10,11 +10,13 @@ import TopExpensesChart from "./components/TopExpensesChart";
 import SavingsBreakdown from "./components/SavingsBreakdown";
 import VendorTable from "./components/VendorTable";
 import SummaryTable from "./components/SummaryTable";
+import CoworkingComparison from "./components/CoworkingComparison";
 
 const tabs = [
-  { id: "overview", label: "📊 Executive Overview" },
-  { id: "summary",  label: "📋 Cost Summary Table" },
-  { id: "vendors",  label: "🏷️ Vendor-wise Details" },
+  { id: "overview",   label: "📊 Executive Overview" },
+  { id: "summary",    label: "📋 Cost Summary Table" },
+  { id: "vendors",    label: "🏷️ Vendor-wise Details" },
+  { id: "coworking",  label: "🏙️ Co-Working Options" },
 ];
 
 export default function Home() {
@@ -43,7 +45,7 @@ export default function Home() {
                 <div>
                   <span style={{ color: "#34d399", fontWeight: 700, fontSize: 14 }}>RECOMMENDATION: </span>
                   <span style={{ color: "#6ee7b7", fontSize: 14 }}>Move to Co-Working Space — Save </span>
-                  <span style={{ color: "#34d399", fontWeight: 800, fontSize: 14 }}>₹78.39L annually</span>
+                  <span style={{ color: "#34d399", fontWeight: 800, fontSize: 14 }}>₹76.78L annually</span>
                 </div>
               </div>
             </div>
@@ -106,6 +108,9 @@ export default function Home() {
         )}
         {activeTab === "vendors" && (
           <VendorTable data={vendorData} />
+        )}
+        {activeTab === "coworking" && (
+          <CoworkingComparison />
         )}
       </main>
 
