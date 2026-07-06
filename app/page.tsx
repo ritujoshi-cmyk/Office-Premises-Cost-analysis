@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { kpis, benefits, monthlyActuals, summaryData, vendorData, summaryTableData, summaryTotals, summaryBenefits } from "./data";
+import { versions } from "./versions";
+import { fmt } from "./utils";
 import KpiCards from "./components/KpiCards";
 import CostComparisonChart from "./components/CostComparisonChart";
 import MonthlyTrendChart from "./components/MonthlyTrendChart";
@@ -21,6 +22,7 @@ const tabs = [
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("overview");
+  const v = versions.find(ver => ver.id === "v2")!;
 
   return (
     <div className="min-h-screen" style={{ background: "#f1f5f9", fontFamily: "var(--font-jakarta), sans-serif" }}>
@@ -35,25 +37,35 @@ export default function Home() {
                 </span>
               </div>
               <h1 style={{ color: "#ffffff", fontSize: 32, fontWeight: 800, lineHeight: 1.2, marginBottom: 8 }}>
-                Office Premises Cost Analysis
+                Gurgaon Corporate Office Relocation Analysis
               </h1>
               <p style={{ color: "#94a3b8", fontSize: 16, marginBottom: 20 }}>
                 Urmil Gupta Lease Property vs Co-Working Space + Basement + Offline Centre
               </p>
-              <div style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.3)", borderRadius: 12, padding: "12px 20px", display: "inline-flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 18 }}>✅</span>
-                <div>
-                  <span style={{ color: "#34d399", fontWeight: 700, fontSize: 14 }}>RECOMMENDATION: </span>
-                  <span style={{ color: "#6ee7b7", fontSize: 14 }}>Move to Co-Working Space — Save </span>
-                  <span style={{ color: "#34d399", fontWeight: 800, fontSize: 14 }}>₹76.78L annually</span>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <div style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.3)", borderRadius: 12, padding: "12px 20px", display: "inline-flex", alignItems: "center", gap: 10 }}>
+                  <span style={{ fontSize: 18 }}>✅</span>
+                  <div>
+                    <span style={{ color: "#34d399", fontWeight: 700, fontSize: 14 }}>RECOMMENDATION: </span>
+                    <span style={{ color: "#6ee7b7", fontSize: 14 }}>Move to Co-Working Space — Save </span>
+                    <span style={{ color: "#34d399", fontWeight: 800, fontSize: 14 }}>{fmt(v.kpis.annualSavings)} annually</span>
+                  </div>
+                </div>
+                <div style={{ background: "rgba(251,191,36,0.1)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 12, padding: "10px 20px", display: "inline-flex", alignItems: "center", gap: 10 }}>
+                  <span style={{ fontSize: 16 }}>📅</span>
+                  <div>
+                    <span style={{ color: "#fbbf24", fontWeight: 700, fontSize: 13 }}>2027 OUTLOOK: </span>
+                    <span style={{ color: "#fde68a", fontSize: 13 }}>Savings will increase further once the basement lease lock-in period is released in 2027 - pushing annual savings beyond </span>
+                    <span style={{ color: "#fbbf24", fontWeight: 800, fontSize: 13 }}>{fmt((v.kpis.monthlySavings + 300000) * 12)}</span>
+                  </div>
                 </div>
               </div>
             </div>
             <div style={{ flexShrink: 0 }}>
               <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 16, padding: "16px 24px", textAlign: "right" }}>
                 <p style={{ color: "#64748b", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>Data Period</p>
-                <p style={{ color: "#ffffff", fontWeight: 700, fontSize: 15 }}>Sep 2024 – Mar 2025</p>
-                <p style={{ color: "#64748b", fontSize: 12, marginTop: 2 }}>7 months of actuals</p>
+                <p style={{ color: "#ffffff", fontWeight: 700, fontSize: 15 }}>Sep 2024 – May 2025</p>
+                <p style={{ color: "#64748b", fontSize: 12, marginTop: 2 }}>9 months of actuals</p>
               </div>
             </div>
           </div>
@@ -91,23 +103,23 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-6 py-8">
         {activeTab === "overview" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            <KpiCards kpis={kpis} />
+            <KpiCards kpis={v.kpis} />
             <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 20 }}>
-              <CostComparisonChart data={summaryData} />
-              <TopExpensesChart data={summaryData} />
+              <CostComparisonChart data={v.summaryData} />
+              <TopExpensesChart data={v.summaryData} />
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 20 }}>
-              <MonthlyTrendChart data={monthlyActuals} />
-              <SavingsBreakdown data={summaryData} kpis={kpis} />
+              <MonthlyTrendChart data={v.monthlyActuals} />
+              <SavingsBreakdown data={v.summaryData} kpis={v.kpis} />
             </div>
-            <BenefitsSection benefits={benefits} />
+            <BenefitsSection benefits={v.benefits} />
           </div>
         )}
         {activeTab === "summary" && (
-          <SummaryTable data={summaryTableData} totals={summaryTotals} benefits={summaryBenefits} />
+          <SummaryTable data={v.summaryTableData} totals={v.summaryTotals} benefits={v.summaryBenefits} />
         )}
         {activeTab === "vendors" && (
-          <VendorTable data={vendorData} />
+          <VendorTable data={v.vendorData} />
         )}
         {activeTab === "coworking" && (
           <CoworkingComparison />
@@ -115,7 +127,7 @@ export default function Home() {
       </main>
 
       <footer style={{ textAlign: "center", padding: "24px 0", color: "#94a3b8", fontSize: 12, borderTop: "1px solid #e2e8f0", marginTop: 16 }}>
-        Cue Learn Pvt. Limited · Office Premises Cost Analysis · FY 2024–25 · Data: Sep 2024 – Mar 2025
+        Cue Learn Pvt. Limited · Gurgaon Corporate Office Relocation Analysis · FY 2024–25 · Data: Sep 2024 – May 2025
       </footer>
     </div>
   );

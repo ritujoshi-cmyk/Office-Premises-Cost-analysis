@@ -6,11 +6,12 @@ interface Benefit {
   icon: string;
   color: string;
   highlight: boolean;
+  caveat?: string;
 }
 
 const iconMap: Record<string, string> = {
   rupee: "₹", tool: "🔧", building: "🏗️", car: "🚗",
-  star: "⭐", shield: "🔒", scale: "📐", wifi: "📡", users: "👥",
+  star: "⭐", shield: "🔒", scale: "📐", wifi: "📡", users: "👥", calendar: "📅",
 };
 
 const colorMap: Record<string, { bg: string; border: string; iconBg: string; title: string }> = {
@@ -70,6 +71,11 @@ export default function BenefitsSection({ benefits }: { benefits: Benefit[] }) {
                 <p style={{ color: b.highlight ? "#6ee7b7" : "#64748b", fontSize: 12, lineHeight: 1.5 }}>
                   {b.description}
                 </p>
+                {b.caveat && (
+                  <p style={{ color: b.highlight ? "rgba(253,230,138,0.75)" : "#94a3b8", fontSize: 11, lineHeight: 1.4, marginTop: 6, fontStyle: "italic", borderTop: `1px solid ${b.highlight ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.06)"}`, paddingTop: 6 }}>
+                    ⚠ {b.caveat}
+                  </p>
+                )}
               </div>
             </div>
           );

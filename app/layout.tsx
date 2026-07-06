@@ -9,7 +9,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Office Premises Cost Analysis — Cue Learn Gurgaon",
+  title: "Gurgaon Corporate Office Relocation Analysis — Cue Learn",
   description: "Cost comparison between Urmil Gupta lease property and co-working space",
 };
 

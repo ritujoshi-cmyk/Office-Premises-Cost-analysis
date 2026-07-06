@@ -61,8 +61,8 @@ export default function VendorTable({ data }: { data: VendorRow[] }) {
     return `₹${v.toLocaleString("en-IN")}`;
   }
 
-  const months = ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"];
-  const monthKeys: (keyof VendorRow)[] = ["sep", "oct", "nov", "dec", "jan", "feb", "mar"];
+  const months = ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"];
+  const monthKeys: (keyof VendorRow)[] = ["sep", "oct", "nov", "dec", "jan", "feb", "mar", "apr", "may"];
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>

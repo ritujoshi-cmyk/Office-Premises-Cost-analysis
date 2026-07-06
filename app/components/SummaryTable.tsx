@@ -80,8 +80,8 @@ export default function SummaryTable({ data, totals, benefits }: Props) {
                 <th colSpan={2} style={{ ...th, textAlign: "center", background: "#eff6ff", color: "#1e40af", borderBottom: "2px solid #bfdbfe", letterSpacing: "0.04em" }}>
                   📋 Monthly Cost — Urmil Gupta Lease
                 </th>
-                {/* Group 2: Co-Working + Basement + Offline Centre — 4 columns */}
-                <th colSpan={4} style={{ ...th, textAlign: "center", background: "#f0fdf4", color: "#166534", borderBottom: "2px solid #bbf7d0", letterSpacing: "0.04em" }}>
+                {/* Group 2: Co-Working + Basement + Offline Centre — 3 columns */}
+                <th colSpan={3} style={{ ...th, textAlign: "center", background: "#f0fdf4", color: "#166534", borderBottom: "2px solid #bbf7d0", letterSpacing: "0.04em" }}>
                   🏙️ Monthly Cost — Co-Working + Basement + Offline Centre
                 </th>
                 {/* Monthly Savings */}
@@ -95,7 +95,6 @@ export default function SummaryTable({ data, totals, benefits }: Props) {
                 <th style={{ ...th, background: "#eff6ff", color: "#1e40af", borderBottom: "2px solid #bfdbfe" }}>Projected Avg</th>
                 <th style={{ ...th, background: "#dcfce7", color: "#14532d", borderBottom: "2px solid #bbf7d0" }}>Basement + Offline Centre Cost</th>
                 <th style={{ ...th, background: "#dcfce7", color: "#14532d", borderBottom: "2px solid #bbf7d0" }}>Co-Working Space Cost</th>
-                <th style={{ ...th, background: "#dcfce7", color: "#14532d", borderBottom: "2px solid #bbf7d0" }}>Included / Notes</th>
                 <th style={{ ...th, background: "#bbf7d0", color: "#14532d", fontWeight: 800, borderBottom: "2px solid #bbf7d0" }}>Total Projected</th>
               </tr>
             </thead>
@@ -104,7 +103,6 @@ export default function SummaryTable({ data, totals, benefits }: Props) {
                 const hasSavings = row.savings > 100;
                 const hasNegativeSavings = row.savings < -10;
                 const hasCoWorking = row.coWorking !== null && row.coWorking > 0;
-                const isRent = row.gl.toLowerCase().includes("rent") || row.gl.toLowerCase().includes("basement");
 
                 return (
                   <tr
@@ -144,11 +142,6 @@ export default function SummaryTable({ data, totals, benefits }: Props) {
                       {r(row.coWorking)}
                     </td>
 
-                    {/* Basement+Offline (blank for most rows — part of total) */}
-                    <td style={{ ...td, background: "#fafafa", color: "#94a3b8", fontSize: 11 }}>
-                      {isRent ? "Included" : "—"}
-                    </td>
-
                     {/* Total Projected */}
                     <td style={{ ...td, background: "#f0fdf4", fontWeight: 700, color: "#166534" }}>
                       {row.totalProjected !== null ? r(row.totalProjected) : "—"}
@@ -182,7 +175,6 @@ export default function SummaryTable({ data, totals, benefits }: Props) {
                 <td style={{ ...td, color: "#f87171", fontWeight: 800, fontSize: 13 }}>{fmtTotal(totals.projectedAvg)}</td>
                 <td style={{ ...td, color: "#93c5fd", fontWeight: 800, fontSize: 13 }}>{fmtTotal(totals.urmilGupta)}</td>
                 <td style={{ ...td, color: "#6ee7b7", fontWeight: 800, fontSize: 13 }}>{fmtTotal(totals.coWorking)}</td>
-                <td style={{ ...td, color: "#94a3b8" }}>—</td>
                 <td style={{ ...td, color: "#34d399", fontWeight: 800, fontSize: 13 }}>{fmtTotal(totals.totalProjected)}</td>
                 <td style={{ ...td, textAlign: "center", color: "#c4b5fd", fontWeight: 800, fontSize: 15 }}>{fmtTotal(totals.savings)}</td>
               </tr>
