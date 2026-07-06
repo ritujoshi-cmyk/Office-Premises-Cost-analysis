@@ -22,7 +22,7 @@ const cardConfig: {
     key: "actual",
     label: "Avg. Actual Cost — Urmil Gupta",
     sub: "Urmil Gupta Lease — Avg. Actual",
-    note: "9-month average (Sep 2024–May 2025)",
+    note: "9-month average (Sep 2025–May 2026)",
     bg: "linear-gradient(135deg, #1c1917 0%, #292524 100%)",
     border: "rgba(251,191,36,0.3)",
     accent: "#fbbf24",

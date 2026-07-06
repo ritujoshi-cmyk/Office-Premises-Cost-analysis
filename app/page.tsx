@@ -64,7 +64,7 @@ export default function Home() {
             <div style={{ flexShrink: 0 }}>
               <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 16, padding: "16px 24px", textAlign: "right" }}>
                 <p style={{ color: "#64748b", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>Data Period</p>
-                <p style={{ color: "#ffffff", fontWeight: 700, fontSize: 15 }}>Sep 2024 – May 2025</p>
+                <p style={{ color: "#ffffff", fontWeight: 700, fontSize: 15 }}>Sep 2025 – May 2026</p>
                 <p style={{ color: "#64748b", fontSize: 12, marginTop: 2 }}>9 months of actuals</p>
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function Home() {
       </main>
 
       <footer style={{ textAlign: "center", padding: "24px 0", color: "#94a3b8", fontSize: 12, borderTop: "1px solid #e2e8f0", marginTop: 16 }}>
-        Cue Learn Pvt. Limited · Gurgaon Corporate Office Relocation Analysis · FY 2024–25 · Data: Sep 2024 – May 2025
+        Cue Learn Pvt. Limited · Gurgaon Corporate Office Relocation Analysis · FY 2025–26 · Data: Sep 2025 – May 2026
       </footer>
     </div>
   );

@@ -13,7 +13,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
     <div style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: 12, padding: "12px 16px", boxShadow: "0 8px 24px rgba(0,0,0,0.3)" }}>
-      <p style={{ color: "#94a3b8", fontSize: 12, marginBottom: 4 }}>{label} 2024–25</p>
+      <p style={{ color: "#94a3b8", fontSize: 12, marginBottom: 4 }}>{label} 2025–26</p>
       <p style={{ color: "#ffffff", fontWeight: 800, fontSize: 18 }}>{fmt(payload[0].value)}</p>
     </div>
   );
@@ -27,7 +27,7 @@ export default function MonthlyTrendChart({ data }: { data: MonthData[] }) {
       <div style={{ marginBottom: 20 }}>
         <h2 style={{ color: "#0f172a", fontSize: 16, fontWeight: 700, marginBottom: 4 }}>Monthly Actual Spend Trend</h2>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <p style={{ color: "#64748b", fontSize: 13 }}>Total office expenses · Sep 2024 – Mar 2025</p>
+          <p style={{ color: "#64748b", fontSize: 13 }}>Total office expenses · Sep 2025 – May 2026</p>
           <span style={{ background: "#fef3c7", color: "#92400e", fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 999 }}>
             Avg: {fmt(avg)}/mo
           </span>
