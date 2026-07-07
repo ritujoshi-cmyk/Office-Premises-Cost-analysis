@@ -21,7 +21,7 @@ export const summaryTableData: SummaryRow[] = [
   { gl: "Office Expense",                   avgActual: 112053,  projectedAvg: 132600,  urmilGupta: 33150,  coWorking: null,   totalProjected: 33150,   savings: 99450 },
   { gl: "Basement Rent Cost",               avgActual: 300000,  projectedAvg: 300000,  urmilGupta: 300000, coWorking: null,   totalProjected: 300000,  savings: 0 },
   { gl: "Ground, 1st & 2nd Floor Rent",     avgActual: 1150000, projectedAvg: 1322500, urmilGupta: 440833, coWorking: 700000, totalProjected: 1140833, savings: 181667 },
-  { gl: "Cab Charges",                      avgActual: 118637,  projectedAvg: 150000,  urmilGupta: 0,      coWorking: null,   totalProjected: 0,       savings: 150000 },
+  { gl: "Cab Charges",                      avgActual: 118637,  projectedAvg: 150000,  urmilGupta: 0,      coWorking: 100000, totalProjected: 100000,  savings: 50000 },
   { gl: "Petty Cash Expense",               avgActual: 15556,   projectedAvg: 20000,   urmilGupta: 10000,  coWorking: null,   totalProjected: 10000,   savings: 10000 },
   { gl: "Other Repairs & CC Spends",        avgActual: 200000,  projectedAvg: 240000,  urmilGupta: 80000,  coWorking: null,   totalProjected: 80000,   savings: 160000 },
   { gl: "Security Expenses",                avgActual: 12800,   projectedAvg: 12800,   urmilGupta: 6400,   coWorking: null,   totalProjected: 6400,    savings: 6400 },
@@ -34,9 +34,9 @@ export const summaryTotals = {
   avgActual: 2818778,
   projectedAvg: 3137581,
   urmilGupta: 1192359,
-  coWorking: 734530,
-  totalProjected: 1926889,
-  savings: 1210692,
+  coWorking: 834530,
+  totalProjected: 2026889,
+  savings: 1110692,
 };
 
 export const summaryBenefits = [
@@ -51,10 +51,10 @@ export const kpis = {
   avgActual: 2818778,
   currentMonthlyProjected: 3137581,
   urmilGuptaShare: 1192359,
-  proposedTotal: 1926889,
-  monthlySavings: 1210692,
-  annualSavings: 14528304,
-  savingsPercent: 39,
+  proposedTotal: 2026889,
+  monthlySavings: 1110692,
+  annualSavings: 13328304,
+  savingsPercent: 35,
 };
 
 export const summaryData = [
@@ -63,7 +63,7 @@ export const summaryData = [
   { category: "House Keeping",              urmilGupta: 80000,  coWorking: 0,      savings: 160000 },
   { category: "Other Repairs & CC Spends",  urmilGupta: 80000,  coWorking: 0,      savings: 160000 },
   { category: "Leasehold Improvements",     urmilGupta: 63333,  coWorking: 0,      savings: 126667 },
-  { category: "Cab Charges",                urmilGupta: 150000, coWorking: 0,      savings: 150000 },
+  { category: "Cab Charges",                urmilGupta: 150000, coWorking: 100000, savings: 50000 },
   { category: "Office Expense",             urmilGupta: 33150,  coWorking: 0,      savings: 99450 },
   { category: "Admin Salary",               urmilGupta: 71517,  coWorking: 24780,  savings: 151634 },
   { category: "Internet Charges",           urmilGupta: 50000,  coWorking: 0,      savings: 50000 },
@@ -321,21 +321,21 @@ export const vendorData: VendorRow[] = [
     gl: "Cab Charges", vendor: "Sewak Cab", frequency: "Monthly",
     sep: 120000, oct: 120000, nov: 120000, dec: 120000, jan: 120000, feb: 120000, mar: 120000, apr: 122382, may: 105348, projected: 150000,
     remarks: "Current spend + buffer",
-    status: "eliminated", statusNote: "Cab service not required at co-working location",
+    status: "reduced", statusNote: "Reduced cab service (₹1L/month) still required at co-working location",
   },
 ];
 
 export const benefits = [
   {
-    title: "₹1.45Cr+ Annual Savings",
-    description: "₹12.11L/month savings directly improves the bottom line from day one.",
+    title: "₹1.33Cr+ Annual Savings",
+    description: "₹11.11L/month savings directly improves the bottom line from day one.",
     icon: "rupee",
     color: "emerald",
     highlight: true,
   },
   {
-    title: "₹1.81Cr+ Savings Post-2027",
-    description: "Basement lock-in expires in 2027 — the ₹3L/month basement rent is also eliminated, pushing monthly savings to ₹15.11L and annual savings beyond ₹1.81Cr.",
+    title: "₹1.69Cr+ Savings Post-2027",
+    description: "Basement lock-in expires in 2027 — the ₹3L/month basement rent is also eliminated, pushing monthly savings to ₹14.11L and annual savings beyond ₹1.69Cr.",
     icon: "calendar",
     color: "emerald",
     highlight: true,
